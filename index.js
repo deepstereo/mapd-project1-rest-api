@@ -31,11 +31,10 @@ server.listen(port, ipaddress, function () {
 });
 
 
-// Allow the use of POST - ??
-// server.use(restify.fullResponse());
-
-// Maps req.body to req.params so there is no switching between them
+// Use body-parser to parse HTTP request bodies
 server.use(restify.plugins.bodyParser());
+
+// Default endpoint returns message
 
 server.get('/', function(req, res, next) {
     res.send('Server is listening on port 3000.')
