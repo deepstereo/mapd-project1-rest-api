@@ -1,6 +1,6 @@
 var mongoose = require ("mongoose");
 
-// Create schema for Customer and Order
+// Create schemas for Customer and Order
 
 var schema = {
 
