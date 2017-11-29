@@ -24,7 +24,7 @@ server.use(restify.plugins.bodyParser());
 
 // Default endpoint returns a success message
 server.get('/', function(req, res, next) {
-    res.send('Server is listening on port 3000.')
+    res.send('Server is listening on port 3000. \n Endpoints: /customers, /orders')
     return next();
   });
 
