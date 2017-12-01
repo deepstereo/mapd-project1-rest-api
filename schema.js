@@ -13,7 +13,7 @@ customerSchema: new mongoose.Schema({
 }),
 
 orderSchema: new mongoose.Schema({
-    customer: {type: mongoose.Schema.Types.ObjectId, ref: "Customer"}, 
+    customerID: String, 
     product: String,
     amount: Number,
     discount: Number
