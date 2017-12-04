@@ -38,9 +38,10 @@ createCustomer: function (req, res, next){
     newCustomer.save(function (error, customer){
         if (error) {
             console.log(error);
-            res.send(error);    
+            res.send(error);
         } else {
             console.log("Customer added");
+            console.log(req.body)
             res.send(customer);
         }
     });
