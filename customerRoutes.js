@@ -34,9 +34,7 @@ getCustomerByID: function (req, res, next) {
 
 createCustomer: function (req, res, next){
     console.log('POST request received');
-    var newCustomer = new Customer();
-    newCustomer.businessName = req.body.businessName;
-    newCustomer.address = req.body.address;
+    var newCustomer = new Customer(req.body);
     newCustomer.save(function (error, customer){
         if (error) {
             console.log(error);
