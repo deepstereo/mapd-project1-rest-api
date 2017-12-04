@@ -20,7 +20,7 @@ server.listen(port, function () {
 });
 
 // Use body-parser to parse HTTP request body
-server.use(restify.plugins.bodyParser({mapParams: true}));
+server.use(restify.plugins.bodyParser({mapParams: false}));
 
 // Default endpoint returns a success message
 server.get('/', function(req, res, next) {
