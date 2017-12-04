@@ -34,6 +34,7 @@ getCustomerByID: function (req, res, next) {
 
 createCustomer: function (req, res, next){
     console.log('POST request');
+    console.log(req.body)
     var newCustomer = new Customer(req.body);
     newCustomer.save(function (error, customer){
         if (error) {
@@ -41,7 +42,6 @@ createCustomer: function (req, res, next){
             res.send(error);
         } else {
             console.log("Customer added");
-            console.log(req.body)
             res.send(customer);
         }
     });
