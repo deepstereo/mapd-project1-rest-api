@@ -1,3 +1,4 @@
+
 var restify = require('restify');
 var mongoose = require ("mongoose");
 var port = process.env.PORT || 3000;
@@ -43,6 +44,8 @@ server.del('/customers/:id', routes.deleteCustomer);
 // Use server routes for Orders defined in external module
 server.get('/orders', orderRoutes.getOrders);
 server.get('/orders/:id', orderRoutes.getOrderByID);
+server.get('/customers/:id/orders', orderRoutes.getOrdersByCustomerID);
 server.post('/orders', orderRoutes.createOrder);
+server.post('/customers/:id/orders', orderRoutes.createOrderByCustomerID);
 server.put('/orders/:id', orderRoutes.updateOrder);
 server.del('/orders/:id', orderRoutes.deleteOrder);

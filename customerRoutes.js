@@ -8,6 +8,7 @@ var Customer = mongoose.model('Customer', schema.customerSchema);
 
 var routes = {
 
+// GET /customers
 getCustomers: function (req, res, next) {
     console.log('GET request for all customers');
     Customer.find({}, function (error, result){
@@ -21,6 +22,7 @@ getCustomers: function (req, res, next) {
     });
   },
 
+// GET /customers/:id
 getCustomerByID: function (req, res, next) {
     console.log('GET request for single customer with ID: ' + req.params.id);
     Customer.find({ _id: req.params.id }, function (error, customer) {
@@ -32,6 +34,7 @@ getCustomerByID: function (req, res, next) {
     });
   },
 
+// POST /customers
 createCustomer: function (req, res, next){
     console.log('POST request received');
     var newCustomer = new Customer(req.body);
@@ -46,6 +49,7 @@ createCustomer: function (req, res, next){
     });
 },
 
+// PUT customers/:id
 updateCustomer: function (req, res, next){
     console.log('PUT request');
     Customer.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true}, function(error, customer){
@@ -59,6 +63,7 @@ updateCustomer: function (req, res, next){
     });
 },
 
+// DEL customers/:id
 deleteCustomer: function (req, res, next) {
     console.log('DEL request for customer with ID: ' + req.params.id);
     Customer.remove({ _id: req.params.id }, function (error, result) {

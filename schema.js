@@ -1,5 +1,6 @@
 var mongoose = require ("mongoose");
 
+
 // Create schemas for Customer and Order
 
 var schema = {
@@ -8,17 +9,23 @@ customerSchema: new mongoose.Schema({
     businessName: String, 
     address: String, 
     telephone: Number,
+    email: String,
     contactPerson: String,
-    email: String
+    orders: [{type: mongoose.Schema.Types.ObjectId, ref: 'Order'}],
+    dateCreated: {type: Date, default: Date.now}
 }),
 
 orderSchema: new mongoose.Schema({
-    customerID: String, 
+    customerID: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
     product: String,
     amount: Number,
-    discount: Number
+    isPaid: Boolean,
+    dateCreated: {type: Date, default: Date.now}
 })
 
 };
+
+var Order = mongoose.model('Order', schema.orderSchema);
+var Customer = mongoose.model('Customer', schema.customerSchema);
 
 module.exports = schema;
