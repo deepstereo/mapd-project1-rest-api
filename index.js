@@ -13,11 +13,14 @@ var server = restify.createServer();
 // Start the server and log  
 server.listen(port, function () {
   console.log('Server listening at port ' + port);
-  console.log('Use the following endpoints:');
+  console.log('The following endpoints are available:');
   console.log(' /customers');
   console.log(' /customers/:id');
+  console.log(' /customers/:id/orders');
   console.log(' /orders');
   console.log(' /orders/:id');
+  console.log(' /products');
+  console.log(' /products/:id');
 });
 
 // Use body-parser to parse HTTP request body
@@ -26,13 +29,14 @@ server.use(restify.plugins.bodyParser());
 
 // Default endpoint returns a success message
 server.get('/', function(req, res, next) {
-    res.send('Server is listening on port ' + port + '. Endpoints: /customers, /orders')
+    res.send('Server is listening on port ' + port + '. Endpoints: /customers, /orders, /products');
     return next();
   });
 
 // Import routes from external module
 var routes = require('./customerRoutes');
-var orderRoutes = require('./orderRoutes')
+var orderRoutes = require('./orderRoutes');
+var productRoutes = require('./productRoutes');
 
 // Use server routes for Customers defined in external module
 server.get('/customers', routes.getCustomers);
@@ -49,3 +53,10 @@ server.post('/orders', orderRoutes.createOrder);
 server.post('/customers/:id/orders', orderRoutes.createOrderByCustomerID);
 server.put('/orders/:id', orderRoutes.updateOrder);
 server.del('/orders/:id', orderRoutes.deleteOrder);
+
+// Use server routes for Products defined in external module
+server.get('/products', productRoutes.getProducts);
+server.get('/products/:id', productRoutes.getProductByID);
+server.post('/products', productRoutes.createProduct);
+server.put('/products/:id', productRoutes.updateProduct);
+server.del('/products/:id', productRoutes.deleteProduct);
