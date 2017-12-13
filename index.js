@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000;
 
 // Establish database connection with Mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://svkozak:49QzM4%40tQz@cluster0-shard-00-00-9pqfl.mongodb.net:27017,cluster0-shard-00-01-9pqfl.mongodb.net:27017,cluster0-shard-00-02-9pqfl.mongodb.net:27017/projectOne?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', {useMongoClient: true});
+mongoose.connect('mongodb://centennial:01928374@cluster0-shard-00-00-9pqfl.mongodb.net:27017,cluster0-shard-00-01-9pqfl.mongodb.net:27017,cluster0-shard-00-02-9pqfl.mongodb.net:27017/projectOne?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', {useMongoClient: true});
 
 // Create the restify server
 var server = restify.createServer();
