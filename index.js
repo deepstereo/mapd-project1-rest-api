@@ -34,16 +34,16 @@ server.get('/', function(req, res, next) {
   });
 
 // Import routes from external module
-var routes = require('./customerRoutes');
+var customerRoutes = require('./customerRoutes');
 var orderRoutes = require('./orderRoutes');
 var productRoutes = require('./productRoutes');
 
 // Use server routes for Customers defined in external module
-server.get('/customers', routes.getCustomers);
-server.get('/customers/:id', routes.getCustomerByID);
-server.post('/customers', routes.createCustomer);
-server.put('/customers/:id', routes.updateCustomer);
-server.del('/customers/:id', routes.deleteCustomer);
+server.get('/customers', customerRoutes.getCustomers);
+server.get('/customers/:id', customerRoutes.getCustomerByID);
+server.post('/customers', customerRoutes.createCustomer);
+server.put('/customers/:id', customerRoutes.updateCustomer);
+server.del('/customers/:id', customerRoutes.deleteCustomer);
 
 // Use server routes for Orders defined in external module
 server.get('/orders', orderRoutes.getOrders);
