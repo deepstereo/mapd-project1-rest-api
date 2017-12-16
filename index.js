@@ -27,6 +27,15 @@ server.listen(port, function () {
 server.use(restify.plugins.bodyParser());
 // server.use(restify.plugins.acceptParser(server.acceptable));
 
+// cross origin for web techs
+server.use(
+  function crossOrigin(req,res,next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    return next();
+  }
+);
+
 // Default endpoint returns a success message
 server.get('/', function(req, res, next) {
     res.send('Server is listening on port ' + port + '. Endpoints: /customers, /orders, /products');
