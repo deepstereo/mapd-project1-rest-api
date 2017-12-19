@@ -66,7 +66,7 @@ updateProduct: function (req, res, next){
 // DEL /products/:id
 deleteProduct: function (req, res, next) {
     console.log('DEL request for product with ID: ' + req.params._id);
-    Order.remove({ _id: req.params.id }, function (error, result) {
+    Product.remove({ _id: req.params.id }, function (error, result) {
         if (error) {
             console.log(error);
             res.send(error);

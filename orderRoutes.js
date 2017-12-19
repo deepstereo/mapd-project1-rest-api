@@ -3,6 +3,7 @@ var mongoose = require ("mongoose");
 // Import Mongoose schema from external module
 var schema = require('./schema');
 var Order = mongoose.model('Order', schema.orderSchema);
+var Customer = mongoose.model('Customer', schema.customerSchema);
 
 // Create route functions for server and save them in a module
 
@@ -62,7 +63,9 @@ createOrder: function (req, res, next){
 
 // POST /customers/:id/orders
 createOrderByCustomerID: function (req, res, next){
-    console.log('POST order with customer ID');
+
+    Customer.findOne({_id: req.params.id}).populate()
+
     var newOrder = new Order({
         customerID: req.params.id,
         product: req.body.product,
