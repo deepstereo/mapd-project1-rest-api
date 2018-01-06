@@ -49,23 +49,23 @@ var productRoutes = require('./productRoutes');
 
 // Use server routes for Customers defined in external module
 server.get('/customers', customerRoutes.getCustomers);
-server.get('/customers/:id', customerRoutes.getCustomerByID);
+server.get('/customers/:id', customerRoutes.getCustomerById);
 server.post('/customers', customerRoutes.createCustomer);
 server.put('/customers/:id', customerRoutes.updateCustomer);
 server.del('/customers/:id', customerRoutes.deleteCustomer);
 
 // Use server routes for Orders defined in external module
 server.get('/orders', orderRoutes.getOrders);
-server.get('/orders/:id', orderRoutes.getOrderByID);
-server.get('/customers/:id/orders', orderRoutes.getOrdersByCustomerID);
+server.get('/orders/:id', orderRoutes.getOrderById);
+server.get('/customers/:id/orders', orderRoutes.getOrdersByCustomerId);
 server.post('/orders', orderRoutes.createOrder);
-server.post('/customers/:id/orders', orderRoutes.createOrderByCustomerID);
+server.post('/customers/:id/orders', orderRoutes.createOrderByCustomerId);
 server.put('/orders/:id', orderRoutes.updateOrder);
 server.del('/orders/:id', orderRoutes.deleteOrder);
 
 // Use server routes for Products defined in external module
 server.get('/products', productRoutes.getProducts);
-server.get('/products/:id', productRoutes.getProductByID);
+server.get('/products/:id', productRoutes.getProductById);
 server.post('/products', productRoutes.createProduct);
 server.put('/products/:id', productRoutes.updateProduct);
 server.del('/products/:id', productRoutes.deleteProduct);

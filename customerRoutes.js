@@ -23,9 +23,9 @@ getCustomers: function (req, res, next) {
   },
 
 // GET /customers/:id
-getCustomerByID: function (req, res, next) {
-    console.log('GET request for single customer with ID: ' + req.params.id);
-    Customer.find({ _id: req.params.id }, function (error, customer) {
+getCustomerById: function (req, res, next) {
+    console.log('GET request for single customer with Id: ' + req.params.id);
+    Customer.findOne({ _id: req.params.id }, function (error, customer) {
     if (error) {
         res.send(error);
       } else {
@@ -65,7 +65,7 @@ updateCustomer: function (req, res, next){
 
 // DEL customers/:id
 deleteCustomer: function (req, res, next) {
-    console.log('DEL request for customer with ID: ' + req.params.id);
+    console.log('DEL request for customer with Id: ' + req.params.id);
     Customer.remove({ _id: req.params.id }, function (error, result) {
         if (error) {
             console.log(error);

@@ -15,8 +15,8 @@ customerSchema: new mongoose.Schema({
 }),
 
 orderSchema: new mongoose.Schema({
-    customerID: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
-    product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
+    customerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
+    productId: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
     amount: {type: Number, default: 1},
     isPaid: {type: Boolean, default: false},
     dateCreated: {type: Date, default: Date.now}
