@@ -24,9 +24,9 @@ getOrders: function (req, res, next) {
   },
 
 // GET orders/:id 
-getOrderByID: function (req, res, next) {
-    console.log('GET request for single order with ID: ' + req.params.id);
-    Order.find({ _id: req.params.id }, function (error, order) {
+getOrderById: function (req, res, next) {
+    console.log('GET request for single order with Id: ' + req.params.id);
+    Order.findOne({ _id: req.params.id }, function (error, order) {
     if (error) {
         res.send(error);
       } else {
@@ -36,7 +36,7 @@ getOrderByID: function (req, res, next) {
   },
 
 // GET orders by customer ID /customers/:id/orders 
-getOrdersByCustomerID: function (req, res, next) {
+getOrdersByCustomerId: function (req, res, next) {
     Order.find({ customerID: req.params.id }, function (error, order) {
     if (error) {
         res.send(error);
@@ -62,13 +62,10 @@ createOrder: function (req, res, next){
 },
 
 // POST /customers/:id/orders
-createOrderByCustomerID: function (req, res, next){
-
-    Customer.findOne({_id: req.params.id}).populate()
-
+createOrderByCustomerId: function (req, res, next){
     var newOrder = new Order({
-        customerID: req.params.id,
-        product: req.body.product,
+        customerId: req.params.id,
+        productId: req.body.productId,
         amount: req.body.amount,
         isPaid: req.body.isPaid
     });
@@ -99,7 +96,7 @@ updateOrder: function (req, res, next){
 
 // DEL /orders/:id
 deleteOrder: function (req, res, next) {
-    console.log('DEL request for Order with ID: ' + req.params.id);
+    console.log('DEL request for Order with Id: ' + req.params.id);
     Order.remove({ _id: req.params.id }, function (error, result) {
         if (error) {
             console.log(error);

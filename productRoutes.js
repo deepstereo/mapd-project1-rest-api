@@ -23,9 +23,9 @@ getProducts: function (req, res, next) {
   },
 
 // GET products/:id 
-getProductByID: function (req, res, next) {
+getProductById: function (req, res, next) {
     console.log('GET request for single product with ID: ' + req.params.id);
-    Product.find({ _id: req.params.id }, function (error, product) {
+    Product.findOne({ _id: req.params.id }, function (error, product) {
     if (error) {
         res.send(error);
       } else {
@@ -65,7 +65,7 @@ updateProduct: function (req, res, next){
 
 // DEL /products/:id
 deleteProduct: function (req, res, next) {
-    console.log('DEL request for product with ID: ' + req.params._id);
+    console.log('DEL request for product with Id: ' + req.params._id);
     Product.remove({ _id: req.params.id }, function (error, result) {
         if (error) {
             console.log(error);
