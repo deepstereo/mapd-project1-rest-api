@@ -37,7 +37,7 @@ getOrderById: function (req, res, next) {
 
 // GET orders by customer ID /customers/:id/orders 
 getOrdersByCustomerId: function (req, res, next) {
-    Order.find({ customerID: req.params.id }, function (error, order) {
+    Order.find({ customerId: req.params.id }, function (error, order) {
     if (error) {
         res.send(error);
       } else {
