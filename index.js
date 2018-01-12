@@ -27,7 +27,7 @@ server.listen(port, function () {
 server.use(restify.plugins.bodyParser());
 // server.use(restify.plugins.acceptParser(server.acceptable));
 
-// cross origin for web techs
+// cross origin for web client
 server.use(
   function crossOrigin(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
